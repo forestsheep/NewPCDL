@@ -1,6 +1,6 @@
 ﻿namespace NewPCDL
 {
-    partial class uppic_main
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.

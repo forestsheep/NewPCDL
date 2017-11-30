@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Top.Api;
 using Top.Api.Request;
@@ -13,22 +7,20 @@ using Top.Api.Response;
 using Top.Api.Util;
 using System.IO;
 
-using Newtonsoft.Json;
-
 namespace NewPCDL
 {
     public delegate void MessageEventHandler(string sParam);
 
-    public partial class uppic_main : Form
+    public partial class Main : Form
     {
-        internal static TaobaoApiSetting seta;
+        internal static TaobaoApiSetting setit;
 
-        public uppic_main()
+        public Main()
         {
             InitializeComponent();
-            this.Login += this.OnLogin;
+            this.event_pass_message += this.OnLogWrite;
 
-            seta = JsonConvert.DeserializeObject<TaobaoApiSetting>(File.ReadAllText(@"setting.json"));
+            setit = SettingFileController.ReadSettingFile();
         }
 
         private void btn_upload_Click(object sender, EventArgs e)
@@ -40,7 +32,7 @@ namespace NewPCDL
             }
             try
             {
-                ITopClient client = new DefaultTopClient(seta.ApiUrl, seta.AppKey, seta.Secret);
+                ITopClient client = new DefaultTopClient(setit.ApiUrl, setit.AppKey, setit.Secret);
                 PictureUploadRequest req = new PictureUploadRequest();
                 req.PictureCategoryId = 0L;
                 req.Img = new FileItem(tb_filename.Text);
@@ -49,36 +41,36 @@ namespace NewPCDL
                 //req.PictureId = 10000L;
                 req.ClientType = "client:computer";
                 req.IsHttps = true;
-                PictureUploadResponse rsp = client.Execute(req, seta.SessionKey);
-                OnLoginEventHandler(rsp.Body);
+                PictureUploadResponse rsp = client.Execute(req, setit.SessionKey);
+                OnMessage(rsp.Body);
                 Console.WriteLine(rsp.Body);
             }
             catch (Exception ex)
             {
                 appendLine(ex.ToString());
             }
-            appendLine(seta.ApiUrl);
-            appendLine(seta.AppKey);
-            appendLine(seta.Secret);
-            appendLine(seta.SessionKey);
+            appendLine(setit.ApiUrl);
+            appendLine(setit.AppKey);
+            appendLine(setit.Secret);
+            appendLine(setit.SessionKey);
         }
 
-        private static MessageEventHandler OnLoginEventHandler;
+        private static MessageEventHandler OnMessage;
 
         private string logMessage;
 
-        internal event MessageEventHandler Login
+        private event MessageEventHandler event_pass_message
         {
             add
             {
-                OnLoginEventHandler += new MessageEventHandler(value);
+                OnMessage += new MessageEventHandler(value);
             }
             remove
             {
-                OnLoginEventHandler -= new MessageEventHandler(value);
+                OnMessage -= new MessageEventHandler(value);
             }
         }
-        private void OnLogin(string s)
+        private void OnLogWrite(string s)
         {
             logMessage = s;
             Object[] list = { this, System.EventArgs.Empty };

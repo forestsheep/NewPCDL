@@ -39,6 +39,7 @@
             this.btn_real_url = new System.Windows.Forms.Button();
             this.btn_sandbox_url = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
+            this.btn_pcdl_key = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -87,7 +88,7 @@
             this.tb_apiurl.Location = new System.Drawing.Point(164, 24);
             this.tb_apiurl.Name = "tb_apiurl";
             this.tb_apiurl.Size = new System.Drawing.Size(482, 31);
-            this.tb_apiurl.TabIndex = 3;
+            this.tb_apiurl.TabIndex = 100;
             // 
             // tb_appkey
             // 
@@ -95,7 +96,7 @@
             this.tb_appkey.Location = new System.Drawing.Point(164, 132);
             this.tb_appkey.Name = "tb_appkey";
             this.tb_appkey.Size = new System.Drawing.Size(244, 31);
-            this.tb_appkey.TabIndex = 4;
+            this.tb_appkey.TabIndex = 200;
             // 
             // tb_sessionkey
             // 
@@ -103,7 +104,7 @@
             this.tb_sessionkey.Location = new System.Drawing.Point(164, 256);
             this.tb_sessionkey.Name = "tb_sessionkey";
             this.tb_sessionkey.Size = new System.Drawing.Size(482, 31);
-            this.tb_sessionkey.TabIndex = 5;
+            this.tb_sessionkey.TabIndex = 400;
             // 
             // tb_secret
             // 
@@ -111,14 +112,14 @@
             this.tb_secret.Location = new System.Drawing.Point(164, 194);
             this.tb_secret.Name = "tb_secret";
             this.tb_secret.Size = new System.Drawing.Size(244, 31);
-            this.tb_secret.TabIndex = 6;
+            this.tb_secret.TabIndex = 300;
             // 
             // btn_real_url
             // 
             this.btn_real_url.Location = new System.Drawing.Point(163, 61);
             this.btn_real_url.Name = "btn_real_url";
             this.btn_real_url.Size = new System.Drawing.Size(100, 31);
-            this.btn_real_url.TabIndex = 7;
+            this.btn_real_url.TabIndex = 500;
             this.btn_real_url.Text = "默认正式环境";
             this.btn_real_url.UseVisualStyleBackColor = true;
             this.btn_real_url.Click += new System.EventHandler(this.btn_real_url_Click);
@@ -128,26 +129,37 @@
             this.btn_sandbox_url.Location = new System.Drawing.Point(283, 61);
             this.btn_sandbox_url.Name = "btn_sandbox_url";
             this.btn_sandbox_url.Size = new System.Drawing.Size(100, 31);
-            this.btn_sandbox_url.TabIndex = 8;
+            this.btn_sandbox_url.TabIndex = 600;
             this.btn_sandbox_url.Text = "默认沙盒环境";
             this.btn_sandbox_url.UseVisualStyleBackColor = true;
             this.btn_sandbox_url.Click += new System.EventHandler(this.btn_sandbox_url_Click);
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(129, 309);
+            this.btn_save.Location = new System.Drawing.Point(163, 309);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(372, 37);
-            this.btn_save.TabIndex = 9;
-            this.btn_save.Text = "button1";
+            this.btn_save.Size = new System.Drawing.Size(228, 37);
+            this.btn_save.TabIndex = 700;
+            this.btn_save.Text = "保存";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
+            // btn_pcdl_key
+            // 
+            this.btn_pcdl_key.Location = new System.Drawing.Point(436, 132);
+            this.btn_pcdl_key.Name = "btn_pcdl_key";
+            this.btn_pcdl_key.Size = new System.Drawing.Size(100, 31);
+            this.btn_pcdl_key.TabIndex = 800;
+            this.btn_pcdl_key.Text = "PC大佬";
+            this.btn_pcdl_key.UseVisualStyleBackColor = true;
+            this.btn_pcdl_key.Click += new System.EventHandler(this.btn_pcdl_key_Click);
             // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 358);
+            this.Controls.Add(this.btn_pcdl_key);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_sandbox_url);
             this.Controls.Add(this.btn_real_url);
@@ -179,5 +191,6 @@
         private System.Windows.Forms.Button btn_real_url;
         private System.Windows.Forms.Button btn_sandbox_url;
         private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btn_pcdl_key;
     }
 }

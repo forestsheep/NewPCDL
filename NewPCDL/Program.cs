@@ -16,7 +16,7 @@ namespace NewPCDL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new uppic_main());
+            Application.Run(new Main());
         }
     }
 }
